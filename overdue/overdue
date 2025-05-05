@@ -1,0 +1,5 @@
+exports.overdue = async (req,res) => {
+  const loans = await Loan.find({ user: req.userId, status: 'overdue' })
+                           .populate('customer','name phone');
+  res.json(loans);
+};
