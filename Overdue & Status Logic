@@ -1,0 +1,6 @@
+const moment = require('moment');
+loanSchema.pre('save', function() {
+  if (moment().isAfter(this.dueDate) && this.balance>0) {
+    this.status = 'overdue';
+  }
+});
